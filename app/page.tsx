@@ -90,7 +90,7 @@ export default function Home() {
 
               <div className="mt-6 rounded-2xl border overflow-hidden">
                 <Image
-                  src="/images/x10-hero.webp"
+                  src="/x10-hero.webp"
                   alt="X10 after-school lacrosse"
                   width={1400}
                   height={900}
