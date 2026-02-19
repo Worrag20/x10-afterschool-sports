@@ -1,65 +1,179 @@
 import Image from "next/image";
+import Link from "next/link";
+
+function Section({
+  title,
+  children,
+  id,
+}: {
+  title?: string;
+  id?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="py-14">
+      <div className="mx-auto max-w-6xl px-4">
+        {title ? <h2 className="text-2xl font-semibold tracking-tight">{title}</h2> : null}
+        <div className={title ? "mt-6" : ""}>{children}</div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-white" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="relative mx-auto max-w-6xl px-4 py-20">
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1 text-xs text-zinc-700">
+                <span className="h-2 w-2 rounded-full bg-emerald-600" />
+                X10 After-School Sports
+              </div>
+
+              <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
+                After-School Lacrosse <span className="text-emerald-700">Made Easy</span>
+              </h1>
+
+              <p className="mt-4 text-lg text-zinc-700">
+                X10 brings fast-paced, confidence-building lacrosse to your school—organized,
+                beginner-friendly, and fun from day one.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="rounded-xl bg-emerald-600 px-5 py-3 text-sm font-medium text-white hover:bg-emerald-700"
+                >
+                  Request X10 at Your School
+                </Link>
+                <Link
+                  href="#how"
+                  className="rounded-xl border bg-white px-5 py-3 text-sm font-medium text-zinc-900 hover:bg-zinc-50"
+                >
+                  Learn How It Works
+                </Link>
+              </div>
+
+              <p className="mt-3 text-xs text-zinc-600">
+                Questions? Email{" "}
+                <a className="underline" href="mailto:matt.garrow@x10afterschoolsports.com">
+                  matt.garrow@x10afterschoolsports.com
+                </a>
+              </p>
+            </div>
+
+            {/* Right card */}
+            <div className="rounded-3xl border bg-white p-8 shadow-sm">
+              <div className="grid gap-3 md:grid-cols-2">
+                {[
+                  "Beginner-friendly",
+                  "High-energy sessions",
+                  "Coaching-first culture",
+                  "Lots of touches & reps",
+                ].map((t) => (
+                  <div key={t} className="rounded-2xl border bg-white px-4 py-3 text-sm">
+                    {t}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 rounded-2xl border bg-emerald-50 p-4 text-sm text-zinc-700">
+                Movement • Teamwork • Confidence • Fun
+              </div>
+
+              <div className="mt-6 rounded-2xl border overflow-hidden">
+                <Image
+                  src="/images/x10-hero.webp"
+                  alt="X10 after-school lacrosse"
+                  width={1400}
+                  height={900}
+                  className="h-56 w-full object-cover"
+                />
+              </div>
+
+              <p className="mt-2 text-xs text-zinc-500">
+                (We’ll add your photos next — this will show once we upload them.)
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <Section id="how" title="How it works">
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            {
+              n: "01",
+              h: "We coordinate with your school",
+              p: "Schedule, space, pickup process, and simple communication for families.",
+            },
+            {
+              n: "02",
+              h: "Kids learn + play",
+              p: "Stations + skill games + small-sided competition with tons of action.",
+            },
+            {
+              n: "03",
+              h: "Everyone wins",
+              p: "Active afternoons, confident kids, and a program schools can trust.",
+            },
+          ].map((x) => (
+            <div key={x.n} className="rounded-3xl border bg-white p-6 shadow-sm">
+              <div className="text-xs font-semibold text-emerald-700">{x.n}</div>
+              <div className="mt-2 text-lg font-semibold">{x.h}</div>
+              <div className="mt-2 text-sm text-zinc-600">{x.p}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* WHAT A SESSION LOOKS LIKE */}
+      <Section title="What a session looks like">
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-3xl border p-6">
+            <ul className="space-y-3 text-sm text-zinc-700">
+              <li>• Quick warmup + movement games</li>
+              <li>• Stick skills in stations (passing, catching, shooting)</li>
+              <li>• Small-sided games (lots of touches, lots of fun)</li>
+              <li>• Wrap-up + “win of the day” confidence moment</li>
+            </ul>
+          </div>
+          <div className="rounded-3xl border bg-emerald-50 p-6">
+            <div className="text-sm text-zinc-700">
+              We keep groups active and engaged—less standing, more playing. Sessions are age-appropriate
+              and designed to help kids improve fast while having a great time.
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* CTA */}
+      <section className="border-t bg-zinc-50 py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="rounded-3xl border bg-white p-10">
+            <h2 className="text-3xl font-semibold tracking-tight">Bring X10 to your school.</h2>
+            <p className="mt-3 max-w-2xl text-zinc-700">
+              Request availability and we’ll send details on schedule, format, and next steps.
+            </p>
+            <div className="mt-6">
+              <Link
+                href="/contact"
+                className="inline-flex rounded-xl bg-emerald-600 px-5 py-3 text-sm font-medium text-white hover:bg-emerald-700"
+              >
+                Request X10 at Your School
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
